@@ -20,27 +20,5 @@ import retrofit2.Response;
  * @Description:
  */
 public class RepoRepository<T> {
-    public void login(LoginViewModel loginViewModel,LoginInfoModle loginInfoModle) {
-        RetrofitManage retrofitManage = RetrofitManage.getInstance();
-        String pathUrl = NetApi.LOGIN;
-        Observable<Response<ResponseBody>> responseObservable = retrofitManage.createService().postJsonNet(pathUrl, loginInfoModle);
-        responseObservable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetObserver(loginViewModel.mNetErrorMutableLiveData, new NetCallback() {
-                    @Override
-                    public void onResponse(String dataJson) {
 
-                    }
-
-                    @Override
-                    public void onSubscribe(Disposable disposable) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                }));
-    }
 }

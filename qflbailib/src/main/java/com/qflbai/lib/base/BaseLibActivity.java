@@ -17,6 +17,7 @@ import com.qflbai.lib.ui.activity.ActivityManage;
 import com.qflbai.lib.utils.toast.ToastUtil;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 
 
@@ -36,11 +37,6 @@ public class BaseLibActivity extends AppCompatActivity {
      */
     public Context mContext;
 
-    /**
-     *
-     */
-    public MutableLiveData<NetError> mNetErrorMutableLiveData = new MutableLiveData<>();
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +47,11 @@ public class BaseLibActivity extends AppCompatActivity {
         // 捕获异常
         AppCrashHandler.getInstance().init(BaseApplication.getAppContext());
 
+
+
+
     }
+
 
     @Override
     protected void onStart() {
@@ -121,38 +121,6 @@ public class BaseLibActivity extends AppCompatActivity {
 
     private String getClaseName() {
         return getClass().getSimpleName();
-    }
-
-    protected void netExceptionListen() {
-        mNetErrorMutableLiveData.observe(this, new Observer<NetError>() {
-            @Override
-            public void onChanged(@Nullable NetError netError) {
-                int httpCode = netError.getHttpCode();
-                if (httpCode == 0) {
-                    Throwable e = netError.getE();
-                    if (e instanceof SocketTimeoutException) {
-                        ToastUtil.show(mContext, "网络连接超时");
-                    } else if (e instanceof IOException) {
-                        ToastUtil.show(mContext, "IO异常");
-                    } else {
-                        ToastUtil.show(mContext, "请求异常");
-                    }
-                } else {
-                    if (httpCode == 200) {
-                        String serverMeassea = netError.getServerMeassea();
-                        ToastUtil.show(mContext, serverMeassea);
-                    } else if (httpCode == 401) {
-                        ToastUtil.show(mContext, httpCode + "登陆超时...");
-                        Intent intent = new Intent();
-                        intent.setAction("com.suntech.app.xiuzheng.launch.ui.LoginActivity");
-                        intent.addCategory("android.intent.category.DEFAULT");
-                        mContext.startActivity(intent);
-                    } else {
-                        ToastUtil.show(mContext, httpCode + "错误");
-                    }
-                }
-            }
-        });
     }
 
 }

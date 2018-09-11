@@ -1,11 +1,7 @@
 package com.qflbai.lib.base;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
 
 import com.qflbai.lib.net.callback.modle.NetError;
 
@@ -15,11 +11,14 @@ import com.qflbai.lib.net.callback.modle.NetError;
  * @Description:
  */
 public abstract class BaseViewModle extends ViewModel {
-    public MutableLiveData<NetError> mNetErrorMutableLiveData;
-
-    public void setNetErrorLiveData(MutableLiveData<NetError> netErrorLiveData) {
-        mNetErrorMutableLiveData = netErrorLiveData;
+    private MutableLiveData<NetError> mNetErrorMutableLiveData = new MutableLiveData<>();
+    public String tag = getClaseName();
+    public MutableLiveData<NetError> getNetErrorLiveData() {
+        return mNetErrorMutableLiveData;
     }
 
+    private String getClaseName() {
+        return getClass().getSimpleName();
+    }
     ;
 }
