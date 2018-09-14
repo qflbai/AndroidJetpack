@@ -36,54 +36,54 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        aidlTest();
+       // aidlTest();
     }
 
     private void aidlTest() {
-        Button button = findViewById(R.id.btn);
-        Button button2 = findViewById(R.id.btn2);
-        Button button3 = findViewById(R.id.btn3);
-        final Intent intent = new Intent(getApplicationContext(), AidlService.class);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                bindService(intent, serviceConnection, BIND_AUTO_CREATE);
-            }
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Book book = new Book();
-                book.setBookName("okkk:" + (i++));
-                book.setBookId(i);
-                try {
-                    iBookManager.addBook(book);
-
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<Book> bookList = null;
-                try {
-                    bookList = iBookManager.getBookList();
-                    for (Book book1 : bookList) {
-                        String bookName = book1.getBookName();
-                        int bookId = book1.getBookId();
-                        LogUtil.w("book", bookName);
-                        LogUtil.w("book", bookId+"");
-                    }
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
+//        Button button = findViewById(R.id.btn);
+//        Button button2 = findViewById(R.id.btn2);
+//        Button button3 = findViewById(R.id.btn3);
+//        final Intent intent = new Intent(getApplicationContext(), AidlService.class);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                bindService(intent, serviceConnection, BIND_AUTO_CREATE);
+//            }
+//        });
+//
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Book book = new Book();
+//                book.setBookName("okkk:" + (i++));
+//                book.setBookId(i);
+//                try {
+//                    iBookManager.addBook(book);
+//
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//
+//        button3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                List<Book> bookList = null;
+//                try {
+//                    bookList = iBookManager.getBookList();
+//                    for (Book book1 : bookList) {
+//                        String bookName = book1.getBookName();
+//                        int bookId = book1.getBookId();
+//                        LogUtil.w("book", bookName);
+//                        LogUtil.w("book", bookId+"");
+//                    }
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
     }
 }

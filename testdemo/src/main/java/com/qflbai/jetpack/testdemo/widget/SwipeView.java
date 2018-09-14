@@ -37,20 +37,22 @@ public class SwipeView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        measureChild(mLfetView,widthMeasureSpec,heightMeasureSpec);
+        measureChild(mRightView,widthMeasureSpec,heightMeasureSpec);
         int width = 0;
         int height = 0;
         int  widthMode = MeasureSpec.getMode(widthMeasureSpec);
         if(widthMode==MeasureSpec.AT_MOST){
-            width = WindowManager.LayoutParams.MATCH_PARENT;
+            width = mLfetView.getMeasuredWidth();
         }else {
             width = MeasureSpec.getSize(widthMeasureSpec);
         }
 
-        setMeasuredDimension(MeasureSpec.makeMeasureSpec(width,widthMode),200);
+        setMeasuredDimension(MeasureSpec.makeMeasureSpec(width,widthMode),MeasureSpec.makeMeasureSpec(MeasureSpec.getMode(heightMeasureSpec),mLfetView.getMeasuredHeight()));
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b){
-
+        mLfetView.layout(0,0,WindowManager.LayoutParams.MATCH_PARENT,200);
     }
 }
