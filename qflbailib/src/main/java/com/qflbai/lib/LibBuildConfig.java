@@ -14,7 +14,7 @@ public final class LibBuildConfig {
      * @return
      */
     public static boolean isDebug() {
-        return BuildConfig.DEBUG;
+        return false;
         //  return false;
     }
 }
