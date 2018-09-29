@@ -6,41 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.qflbai.jetpack.testdemo.widget.SwipeView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
-
-            <TextView
-                android:id="@+id/tv_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@android:color/darker_gray"
-                android:text="滑啊滑" />
-
-            <CheckBox
-                android:id="@+id/cb_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:checked="false"
-                android:visibility="invisible" />
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:text="删除"
-            android:textColor="@android:color/white"
-            />
-    </com.qflbai.jetpack.testdemo.widget.SwipeView>
+    <com.qflbai.jetpack.testdemo.widget.MyListView
+        android:id="@+id/lv_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.qflbai.jetpack.testdemo.widget.MyListView>
 </android.support.constraint.ConstraintLayout>

@@ -8,13 +8,16 @@ import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.qflbai.jetpack.testdemo.aidl.Book;
 import com.qflbai.jetpack.testdemo.aidl.IBookManager;
 import com.qflbai.jetpack.testdemo.service.AidlService;
 import com.qflbai.lib.utils.log.LogUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // aidlTest();
+        // aidlTest();
+        initListView();
     }
 
     private void aidlTest() {
@@ -85,5 +89,15 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
+    }
+
+    private void initListView() {
+        ListView listView = findViewById(R.id.lv_1);
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < 900000; i++) {
+            list.add("有多少  " + i);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_item,R.id.tv_1,list);
+        listView.setAdapter(adapter);
     }
 }
