@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListView() {
-        ListView listView = findViewById(R.id.lv_1);
+       /* ListView listView = findViewById(R.id.lv_1);
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 900000; i++) {
             list.add("有多少  " + i);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_item,R.id.tv_1,list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
     }
 }

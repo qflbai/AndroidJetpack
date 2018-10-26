@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:text="删除"
-            android:layout_marginLeft="20dp"
             android:textColor="@android:color/white" />
     </com.qflbai.jetpack.testdemo.widget.SwipeView>
 </android.support.constraint.ConstraintLayout>
