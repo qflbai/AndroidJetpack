@@ -1,1 +1,1 @@
-include ':app', ':qflbailib', ':testdemo',':qflbaioldLib', ':androidx', ':kotlintest'
+include ':app', ':qflbailib', ':testdemo',':qflbaioldLib', ':androidx', ':kotlintest', ':BaseComponent:library', ':lib'

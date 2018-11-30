@@ -8,9 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/BaseComponent" />
+            <option value="$PROJECT_DIR$/BaseComponent/library" />
             <option value="$PROJECT_DIR$/androidx" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/kotlintest" />
+            <option value="$PROJECT_DIR$/lib" />
             <option value="$PROJECT_DIR$/qflbailib" />
             <option value="$PROJECT_DIR$/qflbaioldLib" />
             <option value="$PROJECT_DIR$/testdemo" />

@@ -1,9 +1,10 @@
 package com.qflbai.lib.base;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.qflbai.lib.net.callback.modle.NetError;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 /**
  * @author WenXian Bai

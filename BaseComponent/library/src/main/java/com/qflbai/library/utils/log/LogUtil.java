@@ -2,7 +2,7 @@ package com.qflbai.library.utils.log;
 
 import android.util.Log;
 
-import com.qflbai.library.utils.LibBuildConfig;
+import com.qflbai.library.LibBuildConfig;
 
 
 /**

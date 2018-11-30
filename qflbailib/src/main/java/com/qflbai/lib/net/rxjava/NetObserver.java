@@ -1,9 +1,5 @@
 package com.qflbai.lib.net.rxjava;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.content.Context;
-import android.content.Intent;
 
 import com.qflbai.lib.net.callback.NetCallback;
 import com.qflbai.lib.net.callback.modle.NetError;
@@ -12,6 +8,7 @@ import com.qflbai.lib.utils.toast.ToastUtil;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 
+import androidx.lifecycle.MutableLiveData;
 import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;

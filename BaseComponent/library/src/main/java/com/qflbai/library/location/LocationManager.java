@@ -6,7 +6,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
-import com.qflbai.library.base.BaseApplication;
+import com.qflbai.library.base.LibBaseApplication;
 import com.qflbai.library.utils.log.LogUtil;
 
 /**
@@ -31,7 +31,7 @@ public class LocationManager {
     }
 
     private void init() {
-        mLocationClient = new LocationClient(BaseApplication.getContext());
+        mLocationClient = new LocationClient(LibBaseApplication.getAPPContext());
         mLocationClient.registerLocationListener(mLocationListener);
         mLocationClient.setLocOption(getDefaultLocationClientOption());
     }
@@ -171,7 +171,7 @@ public class LocationManager {
                 }
                // Log.w(TAG,sb.toString());
                 LogUtil.i(TAG,sb.toString());
-                LocationInfoUtil.savaLAddress(BaseApplication.getContext(), location.getLatitude() + "", location.getLongitude() + "", location.getRadius() + "", location.getCountryCode(),
+                LocationInfoUtil.savaLAddress(LibBaseApplication.getAPPContext(), location.getLatitude() + "", location.getLongitude() + "", location.getRadius() + "", location.getCountryCode(),
                         location.getCountry(), location.getCityCode(), location.getCity(), location.getDistrict(), location.getStreet(),
                         location.getAddrStr(), location.getLocationDescribe());
 

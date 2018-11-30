@@ -1,8 +1,5 @@
 package com.qflbai.jetpack.androidjetpack;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.qflbai.lib.base.BaseViewModle;
 import com.qflbai.lib.net.RetrofitManage;
@@ -11,6 +8,8 @@ import com.qflbai.lib.net.rxjava.NetObserver;
 import com.qflbai.lib.net.url.NetApi;
 import com.qflbai.lib.utils.log.LogUtil;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

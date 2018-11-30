@@ -1,12 +1,8 @@
 package com.qflbai.lib.base;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-
 import com.qflbai.lib.net.callback.modle.NetError;
 import com.qflbai.lib.net.rxjava.BaseObserver;
 import com.qflbai.lib.utils.BarUtils;
@@ -15,6 +11,9 @@ import com.qflbai.lib.utils.toast.ToastUtil;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 /**
  * @author WenXian Bai

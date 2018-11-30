@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tc="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
         android:id="@+id/lv_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></com.qflbai.jetpack.testdemo.widget.MyListView>-->
-    <com.qflbai.jetpack.testdemo.widget.SwipeView
+  <!--  <com.qflbai.jetpack.testdemo.widget.SwipeView
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
@@ -43,5 +44,15 @@
             android:background="@color/colorAccent"
             android:text="删除"
             android:textColor="@android:color/white" />
-    </com.qflbai.jetpack.testdemo.widget.SwipeView>
-</android.support.constraint.ConstraintLayout>
+    </com.qflbai.jetpack.testdemo.widget.SwipeView>-->
+
+    <com.qflbai.jetpack.testdemo.widget.ColorProgressBar
+        android:id="@+id/tasks_view"
+        android:layout_width="223dp"
+        android:layout_height="223dp"
+        tc:circleColor="@color/white"
+        tc:radius="50dip"
+        tc:ringBgColor="@color/white"
+        tc:ringColor="@color/colorAccent"
+        tc:strokeWidth="10dip" />
+</androidx.constraintlayout.widget.ConstraintLayout>

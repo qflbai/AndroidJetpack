@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 20
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+   // implementation project(':BaseComponent:library')
+
+    // butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // fastjson
+    api 'com.alibaba:fastjson:1.1.68.android'
+    // retrofit
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // okhttp
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    // rxjava2
+    api 'io.reactivex.rxjava2:rxjava:2.1.10'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    def room_version = "1.1.1"
+    api "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    // use kapt for Kotlin
+    // optional - RxJava support for Room
+    api "android.arch.persistence.room:rxjava2:$room_version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    api "android.arch.persistence.room:guava:$room_version"
+    api "android.arch.lifecycle:extensions:1.1.1"
+}

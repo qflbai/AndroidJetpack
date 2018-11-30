@@ -1,24 +1,15 @@
 package com.qflbai.jetpack.testdemo;
 
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.os.IBinder;
 
-import com.qflbai.jetpack.testdemo.aidl.Book;
 import com.qflbai.jetpack.testdemo.aidl.IBookManager;
-import com.qflbai.jetpack.testdemo.service.AidlService;
-import com.qflbai.lib.utils.log.LogUtil;
+import com.qflbai.jetpack.testdemo.widget.ColorProgressBar;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class MainActivity extends AppCompatActivity {
     IBookManager iBookManager;
@@ -34,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private int i;
+    private ColorProgressBar mColorProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,12 +84,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListView() {
-       /* ListView listView = findViewById(R.id.lv_1);
-        ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 900000; i++) {
-            list.add("有多少  " + i);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listview_item,R.id.tv_1,list);
-        listView.setAdapter(adapter);*/
+
+        mColorProgressBar = (ColorProgressBar) findViewById(R.id.tasks_view);
+
+        new Thread(new ProgressRunable()).start();
     }
+
+    private int mTotalProgress = 90;
+    private int mCurrentProgress = 0;
+
+
+    class ProgressRunable implements Runnable {
+        @Override
+        public void run() {
+            while (mCurrentProgress < mTotalProgress) {
+                mCurrentProgress += 1;
+                mColorProgressBar.setProgress(mCurrentProgress);
+                try {
+                    Thread.sleep(90);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }

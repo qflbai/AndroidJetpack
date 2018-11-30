@@ -22,6 +22,20 @@ android {
         }
     }
 
+    gradle.startParameter.getTaskNames().each { task ->
+        //library里 BuildConfig.DEBUG默认一直是flase;所以需要自定义
+        if (task.contains("Debug")) {
+            android {
+                defaultPublishConfig "debug"
+            }
+
+        } else if (task.contains("Release")) {
+            android {
+                defaultPublishConfig "release"
+            }
+        }
+    }
+
 }
 
 dependencies {
@@ -58,4 +72,5 @@ dependencies {
     // optional - Guava support for Room, including Optional and ListenableFuture
     api "android.arch.persistence.room:guava:$room_version"
     implementation files('libs/BaiduLBS_Android.jar')
+    api "android.arch.lifecycle:extensions:1.1.1"
 }

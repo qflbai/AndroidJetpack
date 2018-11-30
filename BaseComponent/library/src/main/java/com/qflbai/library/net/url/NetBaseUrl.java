@@ -1,7 +1,7 @@
 package com.qflbai.library.net.url;
 
 
-import com.qflbai.library.utils.LibBuildConfig;
+import com.qflbai.library.LibBuildConfig;
 
 /**
  * @author WenXian Bai

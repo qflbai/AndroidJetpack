@@ -1,24 +1,17 @@
 package com.qflbai.lib.base;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.qflbai.lib.exception.crash.AppCrashHandler;
-import com.qflbai.lib.net.callback.modle.NetError;
 import com.qflbai.lib.ui.activity.ActivityManage;
 import com.qflbai.lib.utils.toast.ToastUtil;
 
-import java.io.IOException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 /**
