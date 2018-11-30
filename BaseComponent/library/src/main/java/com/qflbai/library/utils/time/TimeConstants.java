@@ -1,9 +1,10 @@
 package com.qflbai.library.utils.time;
 
-import android.support.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import androidx.annotation.IntDef;
 
 /**
  * <pre>
