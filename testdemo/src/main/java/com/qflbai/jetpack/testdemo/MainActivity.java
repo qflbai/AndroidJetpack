@@ -4,9 +4,16 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.View;
+import android.widget.Button;
 
 import com.qflbai.jetpack.testdemo.aidl.IBookManager;
-import com.qflbai.jetpack.testdemo.widget.ColorProgressBar;
+import com.qflbai.jetpack.testdemo.widget.CasualBgView;
+import com.qflbai.jetpack.testdemo.widget.marquee.MarqueeView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private int i;
-    private ColorProgressBar mColorProgressBar;
+    private MarqueeView mColorProgressBar;
+    private CasualBgView casualBgView;
+    private int a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,73 +44,72 @@ public class MainActivity extends AppCompatActivity {
         initListView();
     }
 
-    private void aidlTest() {
-//        Button button = findViewById(R.id.btn);
-//        Button button2 = findViewById(R.id.btn2);
-//        Button button3 = findViewById(R.id.btn3);
-//        final Intent intent = new Intent(getApplicationContext(), AidlService.class);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                bindService(intent, serviceConnection, BIND_AUTO_CREATE);
-//            }
-//        });
-//
-//        button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Book book = new Book();
-//                book.setBookName("okkk:" + (i++));
-//                book.setBookId(i);
-//                try {
-//                    iBookManager.addBook(book);
-//
-//                } catch (RemoteException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                List<Book> bookList = null;
-//                try {
-//                    bookList = iBookManager.getBookList();
-//                    for (Book book1 : bookList) {
-//                        String bookName = book1.getBookName();
-//                        int bookId = book1.getBookId();
-//                        LogUtil.w("book", bookName);
-//                        LogUtil.w("book", bookId+"");
-//                    }
-//                } catch (RemoteException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
-    }
 
     private void initListView() {
+        mColorProgressBar = findViewById(R.id.home_marrquee_view);
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("5");
 
-        mColorProgressBar = (ColorProgressBar) findViewById(R.id.tasks_view);
+        List<String> list1 = new ArrayList<>();
+        list1.add("6");
+        list1.add("7");
+        list1.add("8");
+        list1.add("9");
+        list1.add("10");
+        list1.add("11");
 
-        new Thread(new ProgressRunable()).start();
+
+        mColorProgressBar.startWithList(list, list1);
+        Button button = findViewById(R.id.btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mColorProgressBar.showNext();
+            }
+        });
+
+        a = 0;
+        Button btn1 = findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (a == 1) {
+                    a = 0;
+                } else {
+                    a = 1;
+                }
+                mColorProgressBar.setShowPlace(a);
+
+
+            }
+        });
+        // casualBgView = findViewById(R.id.cv);
+        // new Thread(new ProgressRunable()).start();
     }
 
     private int mTotalProgress = 90;
     private int mCurrentProgress = 0;
-
+    // 随机颜色  
+    Random random = new Random();
 
     class ProgressRunable implements Runnable {
         @Override
         public void run() {
-            while (mCurrentProgress < mTotalProgress) {
-                mCurrentProgress += 1;
-                mColorProgressBar.setProgress(mCurrentProgress);
+            while (true) {
+                casualBgView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        int color = 0xff000000 | random.nextInt(0x00ffffff);
+                        casualBgView.setCasualColor(color);
+                    }
+                });
+
                 try {
-                    Thread.sleep(90);
+                    Thread.sleep(500);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

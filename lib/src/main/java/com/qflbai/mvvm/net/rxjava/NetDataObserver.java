@@ -27,7 +27,6 @@ public class NetDataObserver extends BaseObserver {
      */
     private DataNetCallback mNetCallback;
 
-
     public NetDataObserver(DataNetCallback netCallback, BaseRepository baseRepository) {
         mNetCallback = netCallback;
         mAbsRepository = baseRepository;
@@ -62,7 +61,8 @@ public class NetDataObserver extends BaseObserver {
                         } else {
                             String resultCode = serverResponseResult.getResultCode();
                             String stateMessage = ServerResponseState.getStateMessage(resultCode);
-                            (BaseRepository)mAbsRepository.onBusinessError(serverResponseResult);
+                            BaseRepository baseRepository = (BaseRepository) mAbsRepository;
+                            baseRepository.onBusinessError(serverResponseResult);
                             if (!stateMessage.isEmpty()) {
                                 mNetCallback.onFailResponse(serverResponseResult);
                             } else {
